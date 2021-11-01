@@ -1,4 +1,4 @@
 package com.iade.mobilemechanics.controllers;
 
-public class Client {
+public class RepairController {
 }

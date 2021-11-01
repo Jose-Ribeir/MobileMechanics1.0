@@ -1,4 +1,7 @@
 package com.iade.mobilemechanics.models.repositories;
 
-public interface MechanicRepository {
+import com.iade.mobilemechanics.models.Mechanic;
+import org.springframework.data.repository.CrudRepository;
+
+public interface MechanicRepository extends CrudRepository<Mechanic, Integer> {
 }
