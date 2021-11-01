@@ -1,4 +1,4 @@
-package com.iade.mobilemechanics.controllers;
+package com.iade.mobilemechanics.models.exceptions;
 
 public class Response {
     private String message;
