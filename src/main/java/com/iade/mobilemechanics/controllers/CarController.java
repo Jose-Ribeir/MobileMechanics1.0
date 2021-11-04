@@ -11,6 +11,10 @@ public class CarController {
     @GetMapping(path = "/hello",produces = MediaType.APPLICATION_JSON_VALUE)
     public String sayhello(){
         return "hello jaimie";
-        
+    }
+    @GetMapping(path = "/goodbye",produces = MediaType.APPLICATION_JSON_VALUE)
+    public String saygoodbye(){
+        return "bye jaimie";
+
     }
 }
