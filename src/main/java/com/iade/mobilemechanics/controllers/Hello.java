@@ -15,4 +15,8 @@ public class Hello {
     public String getCars(){
         return "hello2";
     }
+    @GetMapping(path = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getCars2(){
+        return "hello2";
+    }
 }

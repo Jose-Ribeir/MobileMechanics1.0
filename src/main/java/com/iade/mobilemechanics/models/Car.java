@@ -27,6 +27,9 @@ public class Car {
     @Column(name = "car_photo_id")
     private Integer carPhotoId;
 
+    public Car() {
+    }
+
     public Integer getCarPhotoId() {
         return carPhotoId;
     }
