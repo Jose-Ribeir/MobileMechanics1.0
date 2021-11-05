@@ -32,7 +32,7 @@ public class MechanicController {
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mechanic savedMechanic(@RequestBody Mechanic mechanic){
         Mechanic savedMechanic = mechanicRepository.save(mechanic);
-        logger.info("Save Client id " + savedMechanic.getId() + " to Database");
+        logger.info("Save Mechanic id " + savedMechanic.getId() + " to Database");
         return savedMechanic;
     }
 
