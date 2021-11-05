@@ -13,7 +13,7 @@ public class Client {
     @Column(name = "client_person_id", nullable = false)
     private Integer clientPersonId;
 
-    @Column(name = "client_NIF", length = 69)
+    @Column(name = "client_nif", length = 69)
     private String clientNif;
 
     public String getClientNif() {
