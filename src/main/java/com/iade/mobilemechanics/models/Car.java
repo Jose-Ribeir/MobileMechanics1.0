@@ -6,12 +6,13 @@ import javax.persistence.*;
 @Table(name="cars")
 public class Car {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id", nullable = false)
     private Integer id;
 
-    @Column(name = "car_license_plate", length = 10)
+    @Column(name = "car_license_plate", length = 8)
     private String carLicensePlate;
 
     @Column(name = "car_year")
@@ -69,4 +70,5 @@ public class Car {
     public Integer getId() {
         return id;
     }
+
 }
