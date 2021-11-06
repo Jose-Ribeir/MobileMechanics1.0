@@ -2,6 +2,7 @@ package com.iade.mobilemechanics.controllers;
 
 import com.iade.mobilemechanics.models.Car;
 import com.iade.mobilemechanics.models.repositories.CarRepository;
+import com.iade.mobilemechanics.models.repositories.ClientRepository;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class CarController {
     private final Logger logger = LoggerFactory.getLogger(CarController.class);
     @Autowired
+    private ClientRepository clientRepository;
     private CarRepository carRepository;
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Car> getCars(){

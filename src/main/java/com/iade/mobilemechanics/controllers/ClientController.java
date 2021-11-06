@@ -25,7 +25,7 @@ public class ClientController {
         return clientRepository.findAll();
     }
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Client> getclient(@PathVariable int id){
+    public Optional<Client> getClient(@PathVariable int id){
         logger.info("Send Client with id "+ id + "to Request");
         return clientRepository.findById(id);
     }
