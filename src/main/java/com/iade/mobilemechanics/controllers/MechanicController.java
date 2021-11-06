@@ -1,7 +1,9 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Car;
 import com.iade.mobilemechanics.models.Client;
 import com.iade.mobilemechanics.models.Mechanic;
+import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.ClientRepository;
 import com.iade.mobilemechanics.models.repositories.MechanicRepository;
 import org.slf4j.Logger;
@@ -20,14 +22,19 @@ public class MechanicController {
     @Autowired
     private MechanicRepository mechanicRepository;
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Mechanic> getMechanic(){
+    public Iterable<Mechanic> getMechanics(){
         logger.info("Send all Mechanics to Request");
         return mechanicRepository.findAll();
     }
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Mechanic> getMechanic(@PathVariable int id){
+    public Mechanic getMechanic(@PathVariable int id){
         logger.info("Send Mechanic with id "+ id + "to Request");
-        return mechanicRepository.findById(id);
+        Optional<Mechanic> _mechanic = mechanicRepository.findById(id);
+        if (!_mechanic.isPresent()) throw
+                new NotFoundException("" + id, "Mechanic", "id");
+        else
+            return _mechanic.get();
+
     }
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mechanic savedMechanic(@RequestBody Mechanic mechanic){

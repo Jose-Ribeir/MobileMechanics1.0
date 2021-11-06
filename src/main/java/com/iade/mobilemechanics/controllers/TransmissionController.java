@@ -1,4 +1,4 @@
 package com.iade.mobilemechanics.controllers;
 
-public class ModelsControllers {
+public class TransmissionController {
 }

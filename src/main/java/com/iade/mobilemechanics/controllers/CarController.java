@@ -1,6 +1,7 @@
 package com.iade.mobilemechanics.controllers;
 
 import com.iade.mobilemechanics.models.Car;
+import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.CarRepository;
 import com.iade.mobilemechanics.models.repositories.ClientRepository;
 import org.slf4j.ILoggerFactory;
@@ -17,7 +18,7 @@ import java.util.Optional;
 public class CarController {
     private final Logger logger = LoggerFactory.getLogger(CarController.class);
     @Autowired
-    private ClientRepository clientRepository;
+
     private CarRepository carRepository;
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Car> getCars(){
@@ -26,9 +27,13 @@ public class CarController {
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Car> getCar(@PathVariable int id){
+    public Car getCar(@PathVariable int id){
         logger.info("Send car with id "+ id + "to Request");
-        return carRepository.findById(id);
+        Optional<Car> _car = carRepository.findById(id);
+        if (!_car.isPresent()) throw
+                new NotFoundException("" + id, "Car", "id");
+        else
+            return _car.get();
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
