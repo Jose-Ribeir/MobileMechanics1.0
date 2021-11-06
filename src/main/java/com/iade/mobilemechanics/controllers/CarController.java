@@ -15,9 +15,6 @@ import java.util.Optional;
 @RequestMapping(path = "/api/cars")
 public class CarController {
     private final Logger logger = LoggerFactory.getLogger(CarController.class);
-
-
-
     @Autowired
     private CarRepository carRepository;
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -25,11 +22,13 @@ public class CarController {
         logger.info("Send all cars to Request");
         return carRepository.findAll();
     }
+
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Car> getcar(@PathVariable int id){
+    public Optional<Car> getCar(@PathVariable int id){
         logger.info("Send car with id "+ id + "to Request");
         return carRepository.findById(id);
     }
+
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Car saveCar(@RequestBody Car car){
         Car savedCar = carRepository.save(car);
@@ -38,7 +37,7 @@ public class CarController {
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String deletecar(@PathVariable int id){
+    public String deleteCar(@PathVariable int id){
         logger.info("Delete car with id "+ id + "to Request");
         carRepository.deleteById(id);
         return "Deleted";
