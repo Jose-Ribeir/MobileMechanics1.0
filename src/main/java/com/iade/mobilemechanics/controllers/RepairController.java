@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/repairs")
 public class RepairController {
-    private final Logger logger = LoggerFactory.getLogger(CarController.class);
+    private final Logger logger = LoggerFactory.getLogger(RepairController.class);
 
     @Autowired
     private RepairRepository repairRepository;

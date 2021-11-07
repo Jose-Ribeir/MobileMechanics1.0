@@ -16,7 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/clients")
 public class ClientController {
-    private final Logger logger = LoggerFactory.getLogger(CarController.class);
+    private final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     @Autowired
     private ClientRepository clientRepository;

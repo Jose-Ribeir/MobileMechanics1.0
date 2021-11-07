@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/persons")
 public class PersonController {
-    private final Logger logger = LoggerFactory.getLogger(CarController.class);
+    private final Logger logger = LoggerFactory.getLogger(PersonController.class);
 
     @Autowired
     private PersonRepository personRepository;

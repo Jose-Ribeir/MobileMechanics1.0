@@ -18,7 +18,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/brands")
 public class BrandController {
-    private final Logger logger = LoggerFactory.getLogger(CarController.class);
+    private final Logger logger = LoggerFactory.getLogger(BrandController.class);
 
     @Autowired
     private BrandRepository brandRepository;

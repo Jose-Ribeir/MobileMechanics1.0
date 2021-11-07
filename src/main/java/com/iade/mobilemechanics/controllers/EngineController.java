@@ -16,7 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/engines")
 public class EngineController {
-    private final Logger logger = LoggerFactory.getLogger(CarController.class);
+    private final Logger logger = LoggerFactory.getLogger(EngineController.class);
 
     @Autowired
     private EngineRepository engineRepository;

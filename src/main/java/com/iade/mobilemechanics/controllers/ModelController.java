@@ -1,9 +1,7 @@
 package com.iade.mobilemechanics.controllers;
 
-import com.iade.mobilemechanics.models.Car;
 import com.iade.mobilemechanics.models.Model;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
-import com.iade.mobilemechanics.models.repositories.CarRepository;
 import com.iade.mobilemechanics.models.repositories.ModelRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +13,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/models")
-public class ModelControllers {
-    private final Logger logger = LoggerFactory.getLogger(CarController.class);
+public class ModelController {
+    private final Logger logger = LoggerFactory.getLogger(ModelController.class);
     @Autowired
 
     private ModelRepository modelRepository;

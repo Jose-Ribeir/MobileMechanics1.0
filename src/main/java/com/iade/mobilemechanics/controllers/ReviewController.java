@@ -16,7 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/reviews")
 public class ReviewController {
-    private final Logger logger = LoggerFactory.getLogger(CarController.class);
+    private final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
     @Autowired
     private ReviewRepository reviewRepository;

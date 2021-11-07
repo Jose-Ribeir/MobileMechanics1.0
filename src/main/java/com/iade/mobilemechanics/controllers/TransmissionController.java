@@ -16,7 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/transmissions")
 public class TransmissionController {
-    private final Logger logger = LoggerFactory.getLogger(CarController.class);
+    private final Logger logger = LoggerFactory.getLogger(TransmissionController.class);
 
     @Autowired
     private TransmissionRepository transmissionRepository;
