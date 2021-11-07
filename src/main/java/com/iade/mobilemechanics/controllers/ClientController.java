@@ -44,7 +44,11 @@ public class ClientController {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteClient(@PathVariable int id){
         logger.info("Delete Client with id "+ id + "to Request");
-        clientRepository.deleteById(id);
-        return "Deleted";
+        Optional<Client> _client = clientRepository.findById(id);
+        if (!_client.isPresent()) throw
+                new NotFoundException("" + id, "Client", "id");
+        else{
+            clientRepository.deleteById(id);
+            return "Deleted";}
     }
 }

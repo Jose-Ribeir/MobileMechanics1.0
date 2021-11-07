@@ -46,7 +46,11 @@ public class CarController {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteCar(@PathVariable int id){
         logger.info("Delete car with id "+ id + "to Request");
-        carRepository.deleteById(id);
-        return "Deleted";
+        Optional<Car> _car = carRepository.findById(id);
+        if (!_car.isPresent()) throw
+                new NotFoundException("" + id, "Car", "id");
+        else{
+            carRepository.deleteById(id);
+            return "Deleted";}
     }
 }

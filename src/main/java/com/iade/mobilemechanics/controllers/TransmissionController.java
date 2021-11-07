@@ -44,7 +44,11 @@ public class TransmissionController {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteReview(@PathVariable int id){
         logger.info("Delete review with id "+ id + "to Request");
-        transmissionRepository.deleteById(id);
-        return "Deleted";
+        Optional<Transmission> _transmission = transmissionRepository.findById(id);
+        if (!_transmission.isPresent()) throw
+                new NotFoundException("" + id, "transmission", "id");
+        else{
+            transmissionRepository.deleteById(id);
+            return "Deleted";}
     }
 }

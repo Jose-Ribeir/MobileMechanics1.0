@@ -49,7 +49,11 @@ public class BrandController {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteBrand(@PathVariable int id) {
         logger.info("Delete Brand with id " + id + "to Request");
-        brandRepository.deleteById(id);
-        return "Deleted";
+        Optional<Brand> _brand = brandRepository.findById(id);
+        if (!_brand.isPresent()) throw
+                new NotFoundException("" + id, "Brand", "id");
+        else{
+            brandRepository.deleteById(id);
+            return "Deleted";}
     }
 }

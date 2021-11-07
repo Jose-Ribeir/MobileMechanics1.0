@@ -47,7 +47,11 @@ public class EngineController {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteEngine(@PathVariable int id) {
         logger.info("Delete Engine with id " + id + "to Request");
-        engineRepository.deleteById(id);
-        return "Deleted";
+        Optional<Engine> _engine = engineRepository.findById(id);
+        if (!_engine.isPresent()) throw
+                new NotFoundException("" + id, "Engine", "id");
+        else{
+            engineRepository.deleteById(id);
+            return "Deleted";}
     }
 }

@@ -46,7 +46,11 @@ public class ModelControllers {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteModel(@PathVariable int id){
         logger.info("Delete model with id "+ id + "to Request");
-        modelRepository.deleteById(id);
-        return "Deleted";
+        Optional<Model> _model = modelRepository.findById(id);
+        if (!_model.isPresent()) throw
+                new NotFoundException("" + id, "model", "id");
+        else{
+            modelRepository.deleteById(id);
+            return "Deleted";}
     }
 }

@@ -46,7 +46,11 @@ public class RepairController {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteRepair(@PathVariable int id) {
         logger.info("Delete Repair with id " + id + "to Request");
-        repairRepository.deleteById(id);
-        return "Deleted";
+        Optional<Repair> _repair = repairRepository.findById(id);
+        if (!_repair.isPresent()) throw
+                new NotFoundException("" + id, "Repair", "id");
+        else{
+            repairRepository.deleteById(id);
+            return "Deleted";}
     }
 }

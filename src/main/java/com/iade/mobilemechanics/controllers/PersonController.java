@@ -42,7 +42,11 @@ public class PersonController {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deletePerson(@PathVariable int id){
         logger.info("Delete Person with id "+ id + "to Request");
-        personRepository.deleteById(id);
-        return "Deleted";
+        Optional<Person> _person = personRepository.findById(id);
+        if (!_person.isPresent()) throw
+                new NotFoundException("" + id, "Person", "id");
+        else{
+            personRepository.deleteById(id);
+            return "Deleted";}
     }
 }

@@ -44,8 +44,12 @@ public class ReviewController {
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteReview(@PathVariable int id){
         logger.info("Delete review with id "+ id + "to Request");
-        reviewRepository.deleteById(id);
-        return "Deleted";
+        Optional<Review> _review = reviewRepository.findById(id);
+        if (!_review.isPresent()) throw
+                new NotFoundException("" + id, "review", "id");
+        else{
+            reviewRepository.deleteById(id);
+            return "Deleted";}
     }
 
 }
