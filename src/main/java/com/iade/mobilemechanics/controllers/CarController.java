@@ -3,8 +3,6 @@ package com.iade.mobilemechanics.controllers;
 import com.iade.mobilemechanics.models.Car;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.CarRepository;
-import com.iade.mobilemechanics.models.repositories.ClientRepository;
-import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

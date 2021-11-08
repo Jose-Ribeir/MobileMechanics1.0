@@ -1,12 +1,8 @@
 package com.iade.mobilemechanics.controllers;
 
 import com.iade.mobilemechanics.models.Brand;
-import com.iade.mobilemechanics.models.Repair;
-import com.iade.mobilemechanics.models.Review;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.BrandRepository;
-import com.iade.mobilemechanics.models.repositories.RepairRepository;
-import com.iade.mobilemechanics.models.repositories.ReviewRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +48,9 @@ public class BrandController {
         Optional<Brand> _brand = brandRepository.findById(id);
         if (!_brand.isPresent()) throw
                 new NotFoundException("" + id, "Brand", "id");
-        else{
+        else {
             brandRepository.deleteById(id);
-            return "Deleted";}
+            return "Deleted";
+        }
     }
 }

@@ -1,8 +1,8 @@
 package com.iade.mobilemechanics.models.exceptions;
 
 public class Response {
-    private String message;
-    private Object object;
+    private final String message;
+    private final Object object;
     public Response(String message, Object object) {
         this.message = message;
         this.object = object;

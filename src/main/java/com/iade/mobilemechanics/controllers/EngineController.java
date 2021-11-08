@@ -1,9 +1,7 @@
 package com.iade.mobilemechanics.controllers;
 
-import com.iade.mobilemechanics.models.Brand;
 import com.iade.mobilemechanics.models.Engine;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
-import com.iade.mobilemechanics.models.repositories.BrandRepository;
 import com.iade.mobilemechanics.models.repositories.EngineRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

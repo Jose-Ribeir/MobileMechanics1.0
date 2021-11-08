@@ -1,6 +1,5 @@
 package com.iade.mobilemechanics.controllers;
 
-import com.iade.mobilemechanics.models.Car;
 import com.iade.mobilemechanics.models.Repair;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.RepairRepository;
