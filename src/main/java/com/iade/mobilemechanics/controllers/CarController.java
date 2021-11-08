@@ -53,4 +53,13 @@ public class CarController {
             carRepository.deleteById(id);
             return "Deleted";}
     }
+
+    @GetMapping(path = "/client/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Car> getCarByClientId(@PathVariable int id){
+        Optional<Car> _car = carRepository.findById(id);
+        if (!_car.isPresent()) throw
+                new NotFoundException("" + id, "Car", "id");
+        else
+            return carRepository.findCarByCarClientId(id);
+    }
 }

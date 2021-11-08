@@ -1,9 +1,7 @@
 package com.iade.mobilemechanics.controllers;
 
-import com.iade.mobilemechanics.models.Transmission;
 import com.iade.mobilemechanics.models.TypeRepair;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
-import com.iade.mobilemechanics.models.repositories.TransmissionRepository;
 import com.iade.mobilemechanics.models.repositories.TypeRepairRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
