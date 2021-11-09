@@ -12,9 +12,6 @@ public class Repair {
     @Column(name = "repair_id", nullable = false)
     private Integer id;
 
-    @Column(name = "repair_name", nullable = false, length = 69)
-    private String repairName;
-
     @Column(name = "repair_date", nullable = false)
     private LocalDate repairDate;
 
@@ -57,14 +54,6 @@ public class Repair {
 
     public void setRepairDate(LocalDate repairDate) {
         this.repairDate = repairDate;
-    }
-
-    public String getRepairName() {
-        return repairName;
-    }
-
-    public void setRepairName(String repairName) {
-        this.repairName = repairName;
     }
 
     public Integer getId() {
