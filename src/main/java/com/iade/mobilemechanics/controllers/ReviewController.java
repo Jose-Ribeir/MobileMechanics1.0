@@ -33,10 +33,10 @@ public class ReviewController {
             return _review.get();
     }
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Review savedReview(@RequestBody Review review){
-        Review savedReview = reviewRepository.save(review);
-        logger.info("Save review id " + savedReview.getId() + " to Database");
-        return savedReview;
+    public Review saveReview(@RequestBody Review review){
+        Review saveReview = reviewRepository.save(review);
+        logger.info("Save review id " + saveReview.getId() + " to Database");
+        return saveReview;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

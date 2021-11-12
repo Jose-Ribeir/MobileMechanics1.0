@@ -36,10 +36,10 @@ public class EngineController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Engine savedEngine(@RequestBody Engine engine) {
-        Engine savedEngine = engineRepository.save(engine);
-        logger.info("Save Engine id " + savedEngine.getId() + " to Database");
-        return savedEngine;
+    public Engine saveEngine(@RequestBody Engine engine) {
+        Engine saveEngine = engineRepository.save(engine);
+        logger.info("Save Engine id " + saveEngine.getId() + " to Database");
+        return saveEngine;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

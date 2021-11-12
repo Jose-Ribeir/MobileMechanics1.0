@@ -33,10 +33,10 @@ public class TypeRepairController {
             return _typeRepair.get();
     }
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public TypeRepair savedTypeRepair(@RequestBody TypeRepair typeRepair){
-        TypeRepair savedTypeRepair = typeRepairRepository.save(typeRepair);
-        logger.info("Save typeRepair id " + savedTypeRepair.getId() + " to Database");
-        return savedTypeRepair;
+    public TypeRepair saveTypeRepair(@RequestBody TypeRepair typeRepair){
+        TypeRepair saveTypeRepair = typeRepairRepository.save(typeRepair);
+        logger.info("Save typeRepair id " + saveTypeRepair.getId() + " to Database");
+        return saveTypeRepair;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

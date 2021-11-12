@@ -34,10 +34,10 @@ public class MechanicController {
 
     }
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mechanic savedMechanic(@RequestBody Mechanic mechanic){
-        Mechanic savedMechanic = mechanicRepository.save(mechanic);
-        logger.info("Save Mechanic id " + savedMechanic.getId() + " to Database");
-        return savedMechanic;
+    public Mechanic saveMechanic(@RequestBody Mechanic mechanic){
+        Mechanic saveMechanic = mechanicRepository.save(mechanic);
+        logger.info("Save Mechanic id " + saveMechanic.getId() + " to Database");
+        return saveMechanic;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

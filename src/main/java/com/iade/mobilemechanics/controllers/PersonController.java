@@ -33,10 +33,10 @@ public class PersonController {
             return _person.get();
     }
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person savedPerson(@RequestBody Person person){
-        Person savedPerson = personRepository.save(person);
-        logger.info("Save Client id " + savedPerson.getId() + " to Database");
-        return savedPerson;
+    public Person savePerson(@RequestBody Person person){
+        Person savePerson = personRepository.save(person);
+        logger.info("Save Client id " + savePerson.getId() + " to Database");
+        return savePerson;
     }
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deletePerson(@PathVariable int id){

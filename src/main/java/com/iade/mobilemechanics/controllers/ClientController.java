@@ -33,10 +33,10 @@ public class ClientController {
             return _client.get();
     }
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Client savedClient(@RequestBody Client client){
-        Client savedClient = clientRepository.save(client);
-        logger.info("Save Client id " + savedClient.getId() + " to Database");
-        return savedClient;
+    public Client saveClient(@RequestBody Client client){
+        Client saveClient = clientRepository.save(client);
+        logger.info("Save Client id " + saveClient.getId() + " to Database");
+        return saveClient;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

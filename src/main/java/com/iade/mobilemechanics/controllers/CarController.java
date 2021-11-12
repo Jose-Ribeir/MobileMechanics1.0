@@ -36,9 +36,9 @@ public class CarController {
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Car saveCar(@RequestBody Car car){
-        Car savedCar = carRepository.save(car);
-        logger.info("Save car id " + savedCar.getId() + " to Database");
-        return savedCar;
+        Car saveCar = carRepository.save(car);
+        logger.info("Save car id " + saveCar.getId() + " to Database");
+        return saveCar;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,7 +52,7 @@ public class CarController {
             return "Deleted";}
     }
 
-    @GetMapping(path = "/clients/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/client/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Car> getCarByClientId(@PathVariable int id){
             return carRepository.findCarByCarClientId(id);
     }

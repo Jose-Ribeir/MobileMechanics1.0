@@ -36,10 +36,10 @@ public class RepairController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Repair savedRepair(@RequestBody Repair repair) {
-        Repair savedRepair = repairRepository.save(repair);
-        logger.info("Save Repair id " + savedRepair.getId() + " to Database");
-        return savedRepair;
+    public Repair saveRepair(@RequestBody Repair repair) {
+        Repair saveRepair = repairRepository.save(repair);
+        logger.info("Save Repair id " + saveRepair.getId() + " to Database");
+        return saveRepair;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

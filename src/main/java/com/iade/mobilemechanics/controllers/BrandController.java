@@ -36,10 +36,10 @@ public class BrandController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Brand savedBrand(@RequestBody Brand brand) {
-        Brand savedBrand = brandRepository.save(brand);
-        logger.info("Save Brand id " + savedBrand.getId() + " to Database");
-        return savedBrand;
+    public Brand saveBrand(@RequestBody Brand brand) {
+        Brand saveBrand = brandRepository.save(brand);
+        logger.info("Save Brand id " + saveBrand.getId() + " to Database");
+        return saveBrand;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
