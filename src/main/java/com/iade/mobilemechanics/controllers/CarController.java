@@ -52,7 +52,7 @@ public class CarController {
             return "Deleted";}
     }
 
-    @GetMapping(path = "/clients/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/client/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Car> getCarByClientId(@PathVariable int id){
             return carRepository.findByCarClientId(id);
     }

@@ -52,7 +52,7 @@ public class ModelController {
             modelRepository.deleteById(id);
             return "Deleted";}
     }
-    @GetMapping(path = "/brands/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/brand/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Model> getModelByModelBrandId(@PathVariable int id){
         return modelRepository.findByModelBrandId(id);
     }
