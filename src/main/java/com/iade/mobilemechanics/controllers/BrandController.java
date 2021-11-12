@@ -1,6 +1,7 @@
 package com.iade.mobilemechanics.controllers;
 
 import com.iade.mobilemechanics.models.Brand;
+import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.BrandRepository;
 import org.slf4j.Logger;
@@ -36,11 +37,19 @@ public class BrandController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Brand saveBrand(@RequestBody Brand brand) {
+    public String saveBrand(@RequestBody Brand brand) {
+
+        Optional<Brand> _brand = brandRepository.findByBrandName(brand.getBrandName());
+        if (_brand.isPresent()) {
+            throw new AlreadyExistsException("" + 10, "Brand", "id");
+        }
+
         Brand saveBrand = brandRepository.save(brand);
         logger.info("Save Brand id " + saveBrand.getId() + " to Database");
-        return saveBrand;
+        return ("" + saveBrand + "");
     }
+
+
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteBrand(@PathVariable int id) {
