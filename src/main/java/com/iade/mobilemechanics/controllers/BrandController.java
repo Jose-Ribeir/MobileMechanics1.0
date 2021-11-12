@@ -38,7 +38,6 @@ public class BrandController {
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public String saveBrand(@RequestBody Brand brand) {
-
         Optional<Brand> _brand = brandRepository.findByBrandName(brand.getBrandName());
         if (_brand.isPresent()) {
             throw new AlreadyExistsException("" + 10, "Brand", "id");

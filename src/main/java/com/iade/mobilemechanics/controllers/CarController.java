@@ -54,6 +54,6 @@ public class CarController {
 
     @GetMapping(path = "/clients/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Car> getCarByClientId(@PathVariable int id){
-            return carRepository.findCarByCarClientId(id);
+            return carRepository.findByCarClientId(id);
     }
 }

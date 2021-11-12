@@ -1,5 +1,6 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Car;
 import com.iade.mobilemechanics.models.Model;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.ModelRepository;
@@ -50,5 +51,9 @@ public class ModelController {
         else{
             modelRepository.deleteById(id);
             return "Deleted";}
+    }
+    @GetMapping(path = "/brands/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Model> getModelByModelBrandId(@PathVariable int id){
+        return modelRepository.findByModelBrandId(id);
     }
 }
