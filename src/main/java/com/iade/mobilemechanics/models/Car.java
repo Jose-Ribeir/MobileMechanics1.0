@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name="cars")
 public class Car {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id", nullable = false)
@@ -27,7 +26,26 @@ public class Car {
     @Column(name = "car_photo_id")
     private Integer carPhotoId;
 
-    public Car() {
+    @Column(name = "car_transmission", length = 69)
+    private String carTransmission;
+
+    @Column(name = "car_information", length = 420)
+    private String carInformation;
+
+    public String getCarInformation() {
+        return carInformation;
+    }
+
+    public void setCarInformation(String carInformation) {
+        this.carInformation = carInformation;
+    }
+
+    public String getCarTransmission() {
+        return carTransmission;
+    }
+
+    public void setCarTransmission(String carTransmission) {
+        this.carTransmission = carTransmission;
     }
 
     public Integer getCarPhotoId() {
