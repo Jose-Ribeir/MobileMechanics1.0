@@ -1,6 +1,8 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Brand;
 import com.iade.mobilemechanics.models.TypeRepair;
+import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.TypeRepairRepository;
 import org.slf4j.Logger;
@@ -34,6 +36,10 @@ public class TypeRepairController {
     }
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public TypeRepair saveTypeRepair(@RequestBody TypeRepair typeRepair){
+        Optional<TypeRepair> _typeRepair = typeRepairRepository.findByTypeRepairName(typeRepair.getTypeRepairName());
+        if (_typeRepair.isPresent()) {
+            throw new AlreadyExistsException(typeRepair.getTypeRepairName(), "Type of Repair", "name ");
+        }
         TypeRepair saveTypeRepair = typeRepairRepository.save(typeRepair);
         logger.info("Save typeRepair id " + saveTypeRepair.getId() + " to Database");
         return saveTypeRepair;

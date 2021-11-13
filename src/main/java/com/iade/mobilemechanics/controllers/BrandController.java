@@ -37,18 +37,15 @@ public class BrandController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String saveBrand(@RequestBody Brand brand) {
+    public Brand saveBrand(@RequestBody Brand brand) {
         Optional<Brand> _brand = brandRepository.findByBrandName(brand.getBrandName());
         if (_brand.isPresent()) {
-            throw new AlreadyExistsException("" + 10, "Brand", "id");
+            throw new AlreadyExistsException(brand.getBrandName(), "Brand", "name ");
         }
-
         Brand saveBrand = brandRepository.save(brand);
         logger.info("Save Brand id " + saveBrand.getId() + " to Database");
-        return ("" + saveBrand + "");
+        return saveBrand;
     }
-
-
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteBrand(@PathVariable int id) {
