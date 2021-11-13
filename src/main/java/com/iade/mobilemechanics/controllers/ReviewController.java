@@ -1,5 +1,6 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Model;
 import com.iade.mobilemechanics.models.Review;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.ReviewRepository;
@@ -49,5 +50,8 @@ public class ReviewController {
             reviewRepository.deleteById(id);
             return "Deleted";}
     }
-
+    @GetMapping(path = "/brand/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Review> getReviewByClientId(@PathVariable int id){
+        return reviewRepository.findByReviewClientId(id);
+    }
 }
