@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface CarRepository extends CrudRepository<Car, Integer> {
    Iterable<Car>findByCarClientId(int id);
+
+   Optional<Car> findCarLicensePlateByCarLicensePlate(String License);
 }
 
 

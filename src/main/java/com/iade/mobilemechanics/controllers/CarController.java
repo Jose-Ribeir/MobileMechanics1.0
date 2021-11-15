@@ -1,6 +1,7 @@
 package com.iade.mobilemechanics.controllers;
 
 import com.iade.mobilemechanics.models.Car;
+import com.iade.mobilemechanics.models.Person;
 import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.CarRepository;
@@ -37,6 +38,11 @@ public class CarController {
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Car savecar(@RequestBody Car car) {
+
+        Optional<Car> _Car = carRepository.findCarLicensePlateByCarLicensePlate(car.getCarLicensePlate());
+        if (_Car.isPresent()) {
+            throw new AlreadyExistsException(car.getCarLicensePlate());
+        }
         Car saveCar = carRepository.save(car);
         logger.info("Save Car id " + saveCar.getId() + " to Database");
         return saveCar;

@@ -14,19 +14,19 @@ public class Car {
     @Column(name = "car_license_plate", length = 8)
     private String carLicensePlate;
 
-    @Column(name = "car_year")
+    @Column(name = "car_year", nullable = false)
     private Integer carYear;
 
-    @Column(name = "car_client_id")
+    @Column(name = "car_client_id", nullable = false)
     private Integer carClientId;
 
-    @Column(name = "car_model_engine_id")
+    @Column(name = "car_model_engine_id", nullable = false)
     private Integer carModelEngineId;
 
     @Column(name = "car_photo_id")
     private Integer carPhotoId;
 
-    @Column(name = "car_transmission", length = 69)
+    @Column(name = "car_transmission", nullable = false, length = 69)
     private String carTransmission;
 
     @Column(name = "car_information", length = 420)
@@ -92,4 +92,7 @@ public class Car {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

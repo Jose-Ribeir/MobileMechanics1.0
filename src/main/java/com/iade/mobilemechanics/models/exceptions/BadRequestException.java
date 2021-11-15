@@ -7,4 +7,9 @@ public class BadRequestException extends RuntimeException {
     public BadRequestException(String name) {
         super("The data you introduced isn't valide "+"'"+name+"'");
     }
+
+
+    public BadRequestException(String numberplate, String a) {
+        super("The data you introduced isn't valide "+"'"+numberplate+"'");
+    }
 }
