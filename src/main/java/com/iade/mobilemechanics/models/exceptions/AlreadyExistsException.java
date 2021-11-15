@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.CONFLICT)
 public class AlreadyExistsException extends RuntimeException {
-    public AlreadyExistsException(String id, String emlType, String idname) {
-        super(emlType + " with " + idname + id + " already exist ");
+    public AlreadyExistsException(String name, String emlType, String idname) {
+        super(emlType + " with " + idname+" " + name + " already exist ");
     }
 }

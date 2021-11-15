@@ -1,6 +1,7 @@
 package com.iade.mobilemechanics.controllers;
 
 import com.iade.mobilemechanics.models.Car;
+import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.CarRepository;
 import org.slf4j.Logger;
@@ -35,11 +36,12 @@ public class CarController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Car saveCar(@RequestBody Car car){
-        Car savedCar = carRepository.save(car);
-        logger.info("Save car id " + savedCar.getId() + " to Database");
-        return savedCar;
+    public Car savecar(@RequestBody Car car) {
+        Car saveCar = carRepository.save(car);
+        logger.info("Save Car id " + saveCar.getId() + " to Database");
+        return saveCar;
     }
+
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteCar(@PathVariable int id){

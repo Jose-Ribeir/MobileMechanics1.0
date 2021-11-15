@@ -1,6 +1,8 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Brand;
 import com.iade.mobilemechanics.models.Person;
+import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.PersonRepository;
 import org.slf4j.Logger;
@@ -34,6 +36,29 @@ public class PersonController {
     }
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Person savePerson(@RequestBody Person person){
+       boolean a=false,b=false;
+
+        Optional<Person> _person = personRepository.findPersonEmailByPersonEmail(person.getPersonEmail());
+        Optional<Person> _person1 = personRepository.findPersonPersonPhoneNumberByPersonPhoneNumber(person.getPersonPhoneNumber());
+
+        if (_person.isPresent()) {
+           a=true;
+        }
+        if (_person1.isPresent()) {
+            b=true;
+               }
+        if(a && b){
+            throw new AlreadyExistsException(person.getPersonEmail(), "Email and Phone number", person.getPersonPhoneNumber());
+        }
+
+         if (a){
+             throw new AlreadyExistsException(person.getPersonEmail(), "Email", "");
+         }
+         else if(b){
+             throw new AlreadyExistsException(person.getPersonPhoneNumber(), "Phone Number", "");
+         }
+
+
         Person savePerson = personRepository.save(person);
         logger.info("Save Client id " + savePerson.getId() + " to Database");
         return savePerson;
