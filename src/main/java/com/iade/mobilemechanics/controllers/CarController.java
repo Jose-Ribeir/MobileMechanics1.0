@@ -37,7 +37,7 @@ public class CarController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Car savecar(@RequestBody Car car) {
+    public Car saveCar(@RequestBody Car car) {
 
         Optional<Car> _Car = carRepository.findCarLicensePlateByCarLicensePlate(car.getCarLicensePlate());
         if (_Car.isPresent()) {

@@ -4,6 +4,6 @@ import com.iade.mobilemechanics.models.Review;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
-Iterable<Review> findByReviewClientId(int id);
+Iterable<Review> findByReviewRepairId(int id);
 
 }

@@ -50,8 +50,8 @@ public class ReviewController {
             reviewRepository.deleteById(id);
             return "Deleted";}
     }
-    @GetMapping(path = "/brand/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Review> getReviewByClientId(@PathVariable int id){
-        return reviewRepository.findByReviewClientId(id);
+    @GetMapping(path = "/repair/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Review> getReviewByRepairId(@PathVariable int id){
+        return reviewRepository.findByReviewRepairId(id);
     }
 }
