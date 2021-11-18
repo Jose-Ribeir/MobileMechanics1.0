@@ -1,5 +1,6 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Model;
 import com.iade.mobilemechanics.models.Repair;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.RepairRepository;
@@ -51,5 +52,10 @@ public class RepairController {
         else{
             repairRepository.deleteById(id);
             return "Deleted";}
+    }
+
+    @GetMapping(path = "/car/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Repair> getRepairByCarId(@PathVariable int id){
+        return repairRepository.findByRepairCarId(id);
     }
 }

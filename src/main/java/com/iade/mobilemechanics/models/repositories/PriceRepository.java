@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface PriceRepository extends CrudRepository<Price, Integer> {
     Optional<Price> findByPriceModelIdAndPriceTypeRepairId(Integer priceModelId, Integer priceTypeRepairId);
-    Optional<Price> findByPriceModelId(int id);
+
 
 
 }
