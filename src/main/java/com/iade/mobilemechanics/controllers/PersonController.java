@@ -40,6 +40,9 @@ public class PersonController {
 
         Optional<Person> _person = personRepository.findPersonEmailByPersonEmail(person.getPersonEmail());
         Optional<Person> _person1 = personRepository.findPersonPersonPhoneNumberByPersonPhoneNumber(person.getPersonPhoneNumber());
+        if (!person.getPersonEmail().contains("@") && !person.getPersonEmail().contains(".") ){
+            throw new AlreadyExistsException(person.getPersonEmail(), "");
+        }
 
         if (_person.isPresent()) {
            a=true;

@@ -11,4 +11,7 @@ public class AlreadyExistsException extends RuntimeException {
     public AlreadyExistsException(String numberplate) {
         super("The numberplate '"+numberplate+"' already exists");
     }
+    public AlreadyExistsException(String email, String a) {
+        super("The email '"+email+"' is not valid.");
+    }
 }
