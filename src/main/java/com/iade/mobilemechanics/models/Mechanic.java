@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="mechanics")
 public class Mechanic {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mechanic_id", nullable = false)
@@ -18,6 +19,17 @@ public class Mechanic {
 
     @Column(name = "mechanic_about_me", length = 69)
     private String mechanicAboutMe;
+
+    @Column(name = "mechanic_availability", nullable = false)
+    private Boolean mechanicAvailability = false;
+
+    public Boolean getMechanicAvailability() {
+        return mechanicAvailability;
+    }
+
+    public void setMechanicAvailability(Boolean mechanicAvailability) {
+        this.mechanicAvailability = mechanicAvailability;
+    }
 
     public String getMechanicAboutMe() {
         return mechanicAboutMe;
@@ -47,4 +59,7 @@ public class Mechanic {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

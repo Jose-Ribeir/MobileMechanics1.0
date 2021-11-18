@@ -29,14 +29,13 @@ public class PriceController {
         int _modelId = 0, _typeRepairId = 0;
         try {
             _modelId = Integer.parseInt(modelId);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ignored) {
         }
         try {
             _typeRepairId = Integer.parseInt(typeRepairId);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ignored) {
         }
         return priceRepository.findByPriceModelIdAndPriceTypeRepairId(_modelId, _typeRepairId);
     }
-
 }
 

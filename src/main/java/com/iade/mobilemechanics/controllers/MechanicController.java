@@ -1,6 +1,7 @@
 package com.iade.mobilemechanics.controllers;
 
 import com.iade.mobilemechanics.models.Mechanic;
+import com.iade.mobilemechanics.models.Model;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.MechanicRepository;
 import org.slf4j.Logger;
@@ -49,5 +50,9 @@ public class MechanicController {
         else{
             mechanicRepository.deleteById(id);
             return "Deleted";}
+    }
+    @GetMapping(path = "/available", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Mechanic> getByAvailability(){
+        return mechanicRepository.findByMechanicAvailability(true);
     }
 }
