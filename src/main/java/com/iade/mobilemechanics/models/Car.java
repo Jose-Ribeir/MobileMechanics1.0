@@ -18,7 +18,7 @@ public class Car {
     private Integer carYear;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "car_client_id", nullable = false)
+    @JoinColumn(name = "car_client_id")
     private Client carClient;
 
     @ManyToOne(optional = false)
