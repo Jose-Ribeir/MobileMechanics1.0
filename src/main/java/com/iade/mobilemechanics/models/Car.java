@@ -17,11 +17,13 @@ public class Car {
     @Column(name = "car_year", nullable = false)
     private Integer carYear;
 
-    @Column(name = "car_client_id", nullable = false)
-    private Integer carClientId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "car_client_id", nullable = false)
+    private Client carClient;
 
-    @Column(name = "car_model_engine_id", nullable = false)
-    private Integer carModelEngineId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "car_model_id", nullable = false)
+    private ModelEngine carModel;
 
     @Column(name = "car_photo_id")
     private Integer carPhotoId;
@@ -31,6 +33,39 @@ public class Car {
 
     @Column(name = "car_information", length = 420)
     private String carInformation;
+
+    @Column(name = "car_fuel", length = 8)
+    private String carFuel;
+
+    @Column(name = "car_brand_id")
+    private Integer carBrandId;
+
+    @Column(name = "car_engine_id")
+    private Integer carEngineId;
+
+    public Integer getCarEngineId() {
+        return carEngineId;
+    }
+
+    public void setCarEngineId(Integer carEngineId) {
+        this.carEngineId = carEngineId;
+    }
+
+    public Integer getCarBrandId() {
+        return carBrandId;
+    }
+
+    public void setCarBrandId(Integer carBrandId) {
+        this.carBrandId = carBrandId;
+    }
+
+    public String getCarFuel() {
+        return carFuel;
+    }
+
+    public void setCarFuel(String carFuel) {
+        this.carFuel = carFuel;
+    }
 
     public String getCarInformation() {
         return carInformation;
@@ -56,20 +91,20 @@ public class Car {
         this.carPhotoId = carPhotoId;
     }
 
-    public Integer getCarModelEngineId() {
-        return carModelEngineId;
+    public ModelEngine getCarModel() {
+        return carModel;
     }
 
-    public void setCarModelEngineId(Integer carModelEngineId) {
-        this.carModelEngineId = carModelEngineId;
+    public void setCarModel(ModelEngine carModel) {
+        this.carModel = carModel;
     }
 
-    public Integer getCarClientId() {
-        return carClientId;
+    public Client getCarClient() {
+        return carClient;
     }
 
-    public void setCarClientId(Integer carClientId) {
-        this.carClientId = carClientId;
+    public void setCarClient(Client carClient) {
+        this.carClient = carClient;
     }
 
     public Integer getCarYear() {

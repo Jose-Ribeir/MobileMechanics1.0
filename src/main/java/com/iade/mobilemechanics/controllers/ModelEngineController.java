@@ -1,5 +1,6 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Car;
 import com.iade.mobilemechanics.models.Engine;
 import com.iade.mobilemechanics.models.ModelEngine;
 import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
@@ -29,11 +30,20 @@ public class ModelEngineController {
         logger.info("Send all Brands to Request");
         return modelEngineRepository.findAll();
     }
-
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Engine> getModelEngine(@PathVariable int id) {
         return engineRepository.findByValue(id);
     }
+
+    //@GetMapping(path = "/{id}/{id1}", produces = MediaType.APPLICATION_JSON_VALUE)
+    //        public ModelEngine getModelEngine(@PathVariable int id, int id1) {
+    //            logger.info("Send car with id " + id + "to Request");
+    //            Optional<ModelEngine> _modelEngine =modelEngineRepository.findmodelEngineEngineIdBymodelEngineEngineId(id);
+    //            if (!_modelEngine.isPresent()) throw
+    //                    new NotFoundException("" + id, "Car", "id");
+    //            else
+    //                return _modelEngine.get();
+    //       }
 
 
 
