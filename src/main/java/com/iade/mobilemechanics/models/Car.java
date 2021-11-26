@@ -22,13 +22,13 @@ public class Car {
     private Client carClient;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "car_model_id", nullable = false)
+    @JoinColumn(name = "car_model_id")
     private ModelEngine carModel;
 
     @Column(name = "car_photo_id")
     private Integer carPhotoId;
 
-    @Column(name = "car_transmission", nullable = false, length = 69)
+    @Column(name = "car_transmission", length = 69)
     private String carTransmission;
 
     @Column(name = "car_information", length = 420)
