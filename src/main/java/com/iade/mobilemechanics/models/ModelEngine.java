@@ -6,36 +6,41 @@ import javax.persistence.*;
 @Table(name="model_engine")
 public class ModelEngine {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "model_engine_id", nullable = false)
     private Integer id;
 
-    @Column(name = "model_engine_engine_id")
-    private Integer modelEngineEngineId;
+    @ManyToOne
+    @JoinColumn(name = "model_engine_engine_id")
+    private Engine modelEngineEngine;
 
-    @Column(name = "model_engine_model_id")
-    private Integer modelEngineModelId;
+    @ManyToOne
+    @JoinColumn(name = "model_engine_model_id")
+    private Model modelEngineModel;
 
-    public Integer getModelEngineModelId() {
-        return modelEngineModelId;
+    public Model getModelEngineModel() {
+        return modelEngineModel;
     }
 
-    public void setModelEngineModelId(Integer modelEngineModelId) {
-        this.modelEngineModelId = modelEngineModelId;
+    public void setModelEngineModel(Model modelEngineModel) {
+        this.modelEngineModel = modelEngineModel;
     }
 
-    public Integer getModelEngineEngineId() {
-        return modelEngineEngineId;
+    public Engine getModelEngineEngine() {
+        return modelEngineEngine;
     }
 
-    public void setModelEngineEngineId(Integer modelEngineEngineId) {
-        this.modelEngineEngineId = modelEngineEngineId;
+    public void setModelEngineEngine(Engine modelEngineEngine) {
+        this.modelEngineEngine = modelEngineEngine;
     }
 
     public Integer getId() {
         return id;
     }
 
-
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

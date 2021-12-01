@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="cars")
 public class Car {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id", nullable = false)
@@ -17,11 +18,11 @@ public class Car {
     @Column(name = "car_year", nullable = false)
     private Integer carYear;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "car_client_id")
     private Client carClient;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "car_model_id")
     private ModelEngine carModel;
 
@@ -37,26 +38,28 @@ public class Car {
     @Column(name = "car_fuel", length = 8)
     private String carFuel;
 
-    @Column(name = "car_brand_id")
-    private Integer carBrandId;
+    @ManyToOne
+    @JoinColumn(name = "car_brand_id")
+    private Brand carBrand;
 
-    @Column(name = "car_engine_id")
-    private Integer carEngineId;
+    @ManyToOne
+    @JoinColumn(name = "car_engine_id")
+    private Engine carEngine;
 
-    public Integer getCarEngineId() {
-        return carEngineId;
+    public Engine getCarEngine() {
+        return carEngine;
     }
 
-    public void setCarEngineId(Integer carEngineId) {
-        this.carEngineId = carEngineId;
+    public void setCarEngine(Engine carEngine) {
+        this.carEngine = carEngine;
     }
 
-    public Integer getCarBrandId() {
-        return carBrandId;
+    public Brand getCarBrand() {
+        return carBrand;
     }
 
-    public void setCarBrandId(Integer carBrandId) {
-        this.carBrandId = carBrandId;
+    public void setCarBrand(Brand carBrand) {
+        this.carBrand = carBrand;
     }
 
     public String getCarFuel() {

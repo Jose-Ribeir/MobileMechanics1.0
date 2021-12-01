@@ -7,6 +7,7 @@ import java.time.LocalDate;
 @Table(name="repairs")
 public class Repair {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "repair_id", nullable = false)
@@ -18,26 +19,28 @@ public class Repair {
     @Column(name = "repair_price", length = 69)
     private String repairPrice;
 
-    @Column(name = "repair_mechanic_id")
-    private Integer repairMechanicId;
+    @ManyToOne
+    @JoinColumn(name = "repair_mechanic_id")
+    private Mechanic repairMechanic;
 
-    @Column(name = "repair_car_id")
-    private Integer repairCarId;
+    @ManyToOne
+    @JoinColumn(name = "repair_car_id")
+    private Car repairCar;
 
-    public Integer getRepairCarId() {
-        return repairCarId;
+    public Car getRepairCar() {
+        return repairCar;
     }
 
-    public void setRepairCarId(Integer repairCarId) {
-        this.repairCarId = repairCarId;
+    public void setRepairCar(Car repairCar) {
+        this.repairCar = repairCar;
     }
 
-    public Integer getRepairMechanicId() {
-        return repairMechanicId;
+    public Mechanic getRepairMechanic() {
+        return repairMechanic;
     }
 
-    public void setRepairMechanicId(Integer repairMechanicId) {
-        this.repairMechanicId = repairMechanicId;
+    public void setRepairMechanic(Mechanic repairMechanic) {
+        this.repairMechanic = repairMechanic;
     }
 
     public String getRepairPrice() {
@@ -60,4 +63,7 @@ public class Repair {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

@@ -5,6 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(name="models")
 public class Model {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "model_id", nullable = false)
@@ -13,15 +15,16 @@ public class Model {
     @Column(name = "model_name", length = 69)
     private String modelName;
 
-    @Column(name = "model_brand_id")
-    private Integer modelBrandId;
+    @ManyToOne
+    @JoinColumn(name = "model_brand_id")
+    private Brand modelBrand;
 
-    public Integer getModelBrandId() {
-        return modelBrandId;
+    public Brand getModelBrand() {
+        return modelBrand;
     }
 
-    public void setModelBrandId(Integer modelBrandId) {
-        this.modelBrandId = modelBrandId;
+    public void setModelBrand(Brand modelBrand) {
+        this.modelBrand = modelBrand;
     }
 
     public String getModelName() {
@@ -36,4 +39,7 @@ public class Model {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
