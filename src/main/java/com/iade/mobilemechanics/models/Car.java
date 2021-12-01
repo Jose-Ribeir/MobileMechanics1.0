@@ -19,10 +19,6 @@ public class Car {
     private Integer carYear;
 
     @ManyToOne
-    @JoinColumn(name = "car_client_id")
-    private Client carClient;
-
-    @ManyToOne
     @JoinColumn(name = "car_model_id")
     private ModelEngine carModel;
 
@@ -45,6 +41,18 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "car_engine_id")
     private Engine carEngine;
+
+    @ManyToOne
+    @JoinColumn(name = "car_client_id")
+    private Client carClient;
+
+    public Client getCarClient() {
+        return carClient;
+    }
+
+    public void setCarClient(Client carClient) {
+        this.carClient = carClient;
+    }
 
     public Engine getCarEngine() {
         return carEngine;
@@ -100,14 +108,6 @@ public class Car {
 
     public void setCarModel(ModelEngine carModel) {
         this.carModel = carModel;
-    }
-
-    public Client getCarClient() {
-        return carClient;
-    }
-
-    public void setCarClient(Client carClient) {
-        this.carClient = carClient;
     }
 
     public Integer getCarYear() {
