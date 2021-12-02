@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="cars")
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id", nullable = false)
@@ -40,15 +41,16 @@ public class Car {
     @JoinColumn(name = "car_engine_id")
     private Engine carEngine;
 
-    @Column(name = "car_client_id")
-    private Integer carClientId;
+    @ManyToOne
+    @JoinColumn(name = "car_client_id")
+    private Client carClient;
 
-    public Integer getCarClientId() {
-        return carClientId;
+    public Client getCarClient() {
+        return carClient;
     }
 
-    public void setCarClientId(Integer carClientId) {
-        this.carClientId = carClientId;
+    public void setCarClient(Client carClient) {
+        this.carClient = carClient;
     }
 
     public Engine getCarEngine() {
