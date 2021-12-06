@@ -36,7 +36,7 @@ public class PersonController {
     }
 
 
-    @GetMapping(path = "/{user}/{pass}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/log/{user}/{pass}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Person getPerson(@PathVariable String user, @PathVariable String pass){
         logger.info("Send Person with id " + "to Request");
         Optional<Person> _person = personRepository.findPersonEmailByPersonEmailAndPersonPassword(user,pass);
