@@ -6,15 +6,13 @@ import javax.persistence.*;
 @Table(name="clients")
 public class Client {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "client_person_id", nullable = false)
-    private Person clientPerson;
+    @Column(name = "client_person_id", nullable = false)
+    private Integer clientPersonId;
 
     @Column(name = "client_nif", length = 69)
     private String clientNif;
@@ -27,12 +25,12 @@ public class Client {
         this.clientNif = clientNif;
     }
 
-    public Person getClientPerson() {
-        return clientPerson;
+    public Integer getClientPersonId() {
+        return clientPersonId;
     }
 
-    public void setClientPerson(Person clientPerson) {
-        this.clientPerson = clientPerson;
+    public void setClientPersonId(Integer clientPersonId) {
+        this.clientPersonId = clientPersonId;
     }
 
     public Integer getId() {
