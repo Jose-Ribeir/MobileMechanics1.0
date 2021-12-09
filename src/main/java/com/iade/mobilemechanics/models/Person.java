@@ -24,6 +24,17 @@ public class Person {
     @Column(name = "person_password", length = 69)
     private String personPassword;
 
+    @Column(name = "person_is_mechanic")
+    private Boolean personIsMechanic;
+
+    public Boolean getPersonIsMechanic() {
+        return personIsMechanic;
+    }
+
+    public void setPersonIsMechanic(Boolean personIsMechanic) {
+        this.personIsMechanic = personIsMechanic;
+    }
+
     public String getPersonPassword() {
         return personPassword;
     }
