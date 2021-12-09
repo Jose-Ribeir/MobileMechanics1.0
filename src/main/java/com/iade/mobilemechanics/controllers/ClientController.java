@@ -32,6 +32,17 @@ public class ClientController {
         else
             return _client.get();
     }
+
+    @GetMapping(path = "/person/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int getClientId(@PathVariable int id){
+        logger.info("Send Client with id "+ id + "to Request");
+        Optional<Client> _client = clientRepository.findByClientPersonId(id);
+        if (!_client.isPresent()) throw
+                new NotFoundException("" + id, "Client", "id");
+        else
+            return _client.get().getId();
+    }
+
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Client saveClient(@RequestBody Client client){
         Client saveClient = clientRepository.save(client);
