@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name="cars")
 public class Car {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id", nullable = false)
@@ -18,8 +17,9 @@ public class Car {
     @Column(name = "car_year", nullable = false)
     private Integer carYear;
 
-    @Column(name = "car_model_id")
-    private Integer carModelId;
+    @ManyToOne
+    @JoinColumn(name = "car_model_id")
+    private Model carModel;
 
     @Column(name = "car_photo_id")
     private Integer carPhotoId;
@@ -33,37 +33,40 @@ public class Car {
     @Column(name = "car_fuel", length = 8)
     private String carFuel;
 
-    @Column(name = "car_brand_id")
-    private Integer carBrandId;
+    @ManyToOne
+    @JoinColumn(name = "car_brand_id")
+    private Brand carBrand;
 
-    @Column(name = "car_engine_id")
-    private Integer carEngineId;
+    @ManyToOne
+    @JoinColumn(name = "car_engine_id")
+    private Engine carEngine;
 
-    @Column(name = "car_client_id")
-    private Integer carClientId;
+    @ManyToOne
+    @JoinColumn(name = "car_client_id")
+    private Client carClient;
 
-    public Integer getCarClientId() {
-        return carClientId;
+    public Client getCarClient() {
+        return carClient;
     }
 
-    public void setCarClientId(Integer carClientId) {
-        this.carClientId = carClientId;
+    public void setCarClient(Client carClient) {
+        this.carClient = carClient;
     }
 
-    public Integer getCarEngineId() {
-        return carEngineId;
+    public Engine getCarEngine() {
+        return carEngine;
     }
 
-    public void setCarEngineId(Integer carEngineId) {
-        this.carEngineId = carEngineId;
+    public void setCarEngine(Engine carEngine) {
+        this.carEngine = carEngine;
     }
 
-    public Integer getCarBrandId() {
-        return carBrandId;
+    public Brand getCarBrand() {
+        return carBrand;
     }
 
-    public void setCarBrandId(Integer carBrandId) {
-        this.carBrandId = carBrandId;
+    public void setCarBrand(Brand carBrand) {
+        this.carBrand = carBrand;
     }
 
     public String getCarFuel() {
@@ -98,12 +101,12 @@ public class Car {
         this.carPhotoId = carPhotoId;
     }
 
-    public Integer getCarModelId() {
-        return carModelId;
+    public Model getCarModel() {
+        return carModel;
     }
 
-    public void setCarModelId(Integer carModelId) {
-        this.carModelId = carModelId;
+    public void setCarModel(Model carModel) {
+        this.carModel = carModel;
     }
 
     public Integer getCarYear() {
