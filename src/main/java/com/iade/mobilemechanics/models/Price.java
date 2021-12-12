@@ -12,11 +12,13 @@ public class Price {
     @Column(name = "price_id", nullable = false)
     private Integer id;
 
-    @Column(name = "price_model_id")
-    private Integer priceModelId;
+    @ManyToOne
+    @JoinColumn(name = "price_model_id")
+    private Model priceModel;
 
-    @Column(name = "price_type_repair_id")
-    private Integer priceTypeRepairId;
+    @ManyToOne
+    @JoinColumn(name = "price_type_repair_id")
+    private TypeRepair priceTypeRepair;
 
     @Column(name = "price_price")
     private Double pricePrice;
@@ -29,24 +31,27 @@ public class Price {
         this.pricePrice = pricePrice;
     }
 
-    public Integer getPriceTypeRepairId() {
-        return priceTypeRepairId;
+    public TypeRepair getPriceTypeRepair() {
+        return priceTypeRepair;
     }
 
-    public void setPriceTypeRepairId(Integer priceTypeRepairId) {
-        this.priceTypeRepairId = priceTypeRepairId;
+    public void setPriceTypeRepair(TypeRepair priceTypeRepair) {
+        this.priceTypeRepair = priceTypeRepair;
     }
 
-    public Integer getPriceModelId() {
-        return priceModelId;
+    public Model getPriceModel() {
+        return priceModel;
     }
 
-    public void setPriceModelId(Integer priceModelId) {
-        this.priceModelId = priceModelId;
+    public void setPriceModel(Model priceModel) {
+        this.priceModel = priceModel;
     }
 
     public Integer getId() {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

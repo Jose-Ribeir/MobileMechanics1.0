@@ -12,4 +12,6 @@ public interface PersonRepository extends CrudRepository<Person, Integer> {
     Optional<Person> findPersonEmailByPersonEmail(String personEmail);
 
     Optional<Person> findPersonPersonPhoneNumberByPersonPhoneNumber(String personEmail);
+
+    Optional<Person> findPersonEmailByPersonEmailAndPersonPassword(String user, String pass);
 }

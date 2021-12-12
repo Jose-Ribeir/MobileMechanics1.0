@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="engines")
 public class Engine {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "engine_id", nullable = false)
@@ -48,4 +49,7 @@ public class Engine {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

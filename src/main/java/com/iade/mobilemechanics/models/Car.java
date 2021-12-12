@@ -17,13 +17,9 @@ public class Car {
     @Column(name = "car_year", nullable = false)
     private Integer carYear;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "car_client_id")
-    private Client carClient;
-
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "car_model_id")
-    private ModelEngine carModel;
+    private Model carModel;
 
     @Column(name = "car_photo_id")
     private Integer carPhotoId;
@@ -37,26 +33,40 @@ public class Car {
     @Column(name = "car_fuel", length = 8)
     private String carFuel;
 
-    @Column(name = "car_brand_id")
-    private Integer carBrandId;
+    @ManyToOne
+    @JoinColumn(name = "car_brand_id")
+    private Brand carBrand;
 
-    @Column(name = "car_engine_id")
-    private Integer carEngineId;
+    @ManyToOne
+    @JoinColumn(name = "car_engine_id")
+    private Engine carEngine;
 
-    public Integer getCarEngineId() {
-        return carEngineId;
+    @ManyToOne
+    @JoinColumn(name = "car_client_id")
+    private Client carClient;
+
+    public Client getCarClient() {
+        return carClient;
     }
 
-    public void setCarEngineId(Integer carEngineId) {
-        this.carEngineId = carEngineId;
+    public void setCarClient(Client carClient) {
+        this.carClient = carClient;
     }
 
-    public Integer getCarBrandId() {
-        return carBrandId;
+    public Engine getCarEngine() {
+        return carEngine;
     }
 
-    public void setCarBrandId(Integer carBrandId) {
-        this.carBrandId = carBrandId;
+    public void setCarEngine(Engine carEngine) {
+        this.carEngine = carEngine;
+    }
+
+    public Brand getCarBrand() {
+        return carBrand;
+    }
+
+    public void setCarBrand(Brand carBrand) {
+        this.carBrand = carBrand;
     }
 
     public String getCarFuel() {
@@ -91,20 +101,12 @@ public class Car {
         this.carPhotoId = carPhotoId;
     }
 
-    public ModelEngine getCarModel() {
+    public Model getCarModel() {
         return carModel;
     }
 
-    public void setCarModel(ModelEngine carModel) {
+    public void setCarModel(Model carModel) {
         this.carModel = carModel;
-    }
-
-    public Client getCarClient() {
-        return carClient;
-    }
-
-    public void setCarClient(Client carClient) {
-        this.carClient = carClient;
     }
 
     public Integer getCarYear() {

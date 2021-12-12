@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="clients")
 public class Client {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id", nullable = false)
@@ -36,4 +37,7 @@ public class Client {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

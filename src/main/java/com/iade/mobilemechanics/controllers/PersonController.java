@@ -34,6 +34,18 @@ public class PersonController {
         else
             return _person.get();
     }
+
+
+    @GetMapping(path = "/log/{user}/{pass}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Person getPerson(@PathVariable String user, @PathVariable String pass){
+        logger.info("Send Person with id " + "to Request");
+        Optional<Person> _person = personRepository.findPersonEmailByPersonEmailAndPersonPassword(user,pass);
+        if (!_person.isPresent()) throw
+                new NotFoundException("" + user, "Person", "Name");
+        else
+            return _person.get();
+    }
+
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Person savePerson(@RequestBody Person person){
        boolean a=false,b=false;
