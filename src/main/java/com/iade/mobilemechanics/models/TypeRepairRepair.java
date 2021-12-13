@@ -42,9 +42,4 @@ public class TypeRepairRepair {
     public void setId(Integer id) {
         this.id = id;
     }
-    public int getTypeRepairRepairId() {
-        return id;
-    }
-
-
 }
