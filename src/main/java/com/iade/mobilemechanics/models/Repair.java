@@ -13,7 +13,7 @@ public class Repair {
     @Column(name = "repair_id", nullable = false)
     private Integer id;
 
-    @Column(name = "repair_date", nullable = false)
+    @Column(name = "repair_date")
     private LocalDate repairDate;
 
     @Column(name = "repair_price", length = 69)
