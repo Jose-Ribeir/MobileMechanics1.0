@@ -7,7 +7,6 @@ import java.time.LocalDate;
 @Table(name="repairs")
 public class Repair {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "repair_id", nullable = false)
