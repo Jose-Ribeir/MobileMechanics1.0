@@ -24,6 +24,7 @@ public class CarController {
     public Iterable<Car> getCars(){
         logger.info("Send all cars to Request");
         return carRepository.findAll();
+
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
