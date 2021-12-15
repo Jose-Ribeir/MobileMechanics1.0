@@ -1,18 +1,22 @@
 package com.iade.mobilemechanics.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="clients")
 public class Client {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id", nullable = false)
     private Integer id;
 
-    @Column(name = "client_person_id", nullable = false)
-    private Integer clientPersonId;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_person_id", nullable = false)
+    private Person clientPerson;
 
     @Column(name = "client_nif", length = 69)
     private String clientNif;
@@ -25,12 +29,12 @@ public class Client {
         this.clientNif = clientNif;
     }
 
-    public Integer getClientPersonId() {
-        return clientPersonId;
+    public Person getClientPerson() {
+        return clientPerson;
     }
 
-    public void setClientPersonId(Integer clientPersonId) {
-        this.clientPersonId = clientPersonId;
+    public void setClientPerson(Person clientPerson) {
+        this.clientPerson = clientPerson;
     }
 
     public Integer getId() {

@@ -1,5 +1,7 @@
 package com.iade.mobilemechanics.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +19,7 @@ public class Car {
     @Column(name = "car_year", nullable = false)
     private Integer carYear;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_model_id")
     private Model carModel;
 
@@ -33,15 +35,16 @@ public class Car {
     @Column(name = "car_fuel", length = 8)
     private String carFuel;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_brand_id")
     private Brand carBrand;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     @JoinColumn(name = "car_engine_id")
     private Engine carEngine;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_client_id")
     private Client carClient;
 
@@ -55,6 +58,11 @@ public class Car {
 
     public Engine getCarEngine() {
         return carEngine;
+    }
+
+    public void setCarEngine(int id) {
+        this.carEngine = new Engine();
+        carEngine.setId(id);
     }
 
     public void setCarEngine(Engine carEngine) {
