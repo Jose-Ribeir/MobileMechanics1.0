@@ -34,6 +34,7 @@ public class RepairController {
                 new NotFoundException("" + id, "Repair", "id");
         else
             return _repair.get();
+
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
