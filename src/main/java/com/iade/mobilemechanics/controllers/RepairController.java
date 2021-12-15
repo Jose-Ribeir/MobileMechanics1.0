@@ -1,7 +1,9 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Car;
 import com.iade.mobilemechanics.models.Model;
 import com.iade.mobilemechanics.models.Repair;
+import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.RepairRepository;
 import org.slf4j.Logger;
@@ -39,6 +41,8 @@ public class RepairController {
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Repair saveRepair(@RequestBody Repair repair) {
+
+        repair.getRepairCar();
         Repair saveRepair = repairRepository.save(repair);
         logger.info("Save Repair id " + saveRepair.getId() + " to Database");
         return saveRepair;
