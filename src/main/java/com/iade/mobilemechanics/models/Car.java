@@ -39,7 +39,7 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "car_engine_id")
-    private Engine carEngine;
+    private ModelEngine carEngine;
 
     @ManyToOne
     @JoinColumn(name = "car_client_id")
@@ -53,11 +53,11 @@ public class Car {
         this.carClient = carClient;
     }
 
-    public Engine getCarEngine() {
+    public ModelEngine getCarEngine() {
         return carEngine;
     }
 
-    public void setCarEngine(Engine carEngine) {
+    public void setCarEngine(ModelEngine carEngine) {
         this.carEngine = carEngine;
     }
 
