@@ -3,11 +3,11 @@ package com.iade.mobilemechanics.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.lang.annotation.Target;
 
 @Entity
 @Table(name="cars")
 public class Car {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,8 @@ public class Car {
     @Column(name = "car_year", nullable = false)
     private Integer carYear;
 
-    @ManyToOne
-    @JoinColumn(name = "car_model_id")
+    @ManyToOne(targetEntity = Model.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_model_id", referencedColumnName = "model_id")
     private Model carModel;
 
     @Column(name = "car_photo_id")
@@ -42,7 +42,7 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "car_engine_id")
-    private ModelEngine carEngine;
+    private Engine carEngine;
 
     @ManyToOne
     @JoinColumn(name = "car_client_id")
@@ -56,11 +56,11 @@ public class Car {
         this.carClient = carClient;
     }
 
-    public ModelEngine getCarEngine() {
+    public Engine getCarEngine() {
         return carEngine;
     }
 
-    public void setCarEngine(ModelEngine carEngine) {
+    public void setCarEngine(Engine carEngine) {
         this.carEngine = carEngine;
     }
 

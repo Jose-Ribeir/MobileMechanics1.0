@@ -1,9 +1,11 @@
 package com.iade.mobilemechanics.controllers;
 
-import com.iade.mobilemechanics.models.Car;
+import com.iade.mobilemechanics.models.*;
+import com.iade.mobilemechanics.models.repositories.*;
+import com.iade.mobilemechanics.models.request.CarRequest;
 import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
-import com.iade.mobilemechanics.models.repositories.CarRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,23 @@ public class CarController {
     @Autowired
 
     private CarRepository carRepository;
+    private BrandRepository brandRepository;
+    private ModelRepository modelRepository;
+    private EngineRepository engineRepository;
+    private ClientRepository clientRepository;
+
+
+    public CarController(BrandRepository brandRepository, ModelRepository modelRepository, EngineRepository engineRepository, ClientRepository clientRepository) {
+        this.brandRepository = brandRepository;
+        this.modelRepository = modelRepository;
+        this.engineRepository = engineRepository;
+        this.clientRepository = clientRepository;
+    }
+
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Car> getCars(){
         logger.info("Send all cars to Request");
         return carRepository.findAll();
-
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -37,16 +51,31 @@ public class CarController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Car saveCar(@RequestBody Car car) {
-
+    public Car saveCar(@RequestBody CarRequest car) {
         Optional<Car> _Car = carRepository.findCarLicensePlateByCarLicensePlate(car.getCarLicensePlate());
         if (_Car.isPresent()) {
             throw new AlreadyExistsException(car.getCarLicensePlate());
         }
-        Car saveCar = carRepository.save(car);
+
+        Optional<Brand> brand = brandRepository.findById(car.getCarBrandId());
+        Optional<Model> model = modelRepository.findById(car.getCarModelId());
+        Optional<Engine> engine = engineRepository.findById(car.getCarEngineId());
+        Optional<Client> client = clientRepository.findById(car.getCarClientId());
+
+        Car car1 = new Car();
+        car1.setCarBrand(brand.get());
+        car1.setCarModel(model.get());
+        car1.setCarEngine(engine.get());
+        car1.setCarClient(client.get());
+        car1.setCarYear(car.getCarYear());
+        car1.setCarLicensePlate(car.getCarLicensePlate());
+        car1.setCarFuel(car.getCarFuel());
+        car1.setCarTransmission(car.getCarTransmission());
+
+        Car saveCar = carRepository.save(car1);
         logger.info("Save Car id " + saveCar.getId() + " to Database");
-        Optional<Car> loadCar = carRepository.findById(saveCar.getId());
-        return loadCar.get();
+
+        return saveCar;
     }
 
 
@@ -59,7 +88,7 @@ public class CarController {
         else{
             carRepository.deleteById(id);
             return "Deleted";}
-    }
+        }
 
     @GetMapping(path = "/client/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Car> getCarByClientId(@PathVariable int id){
