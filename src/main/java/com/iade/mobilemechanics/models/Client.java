@@ -14,7 +14,7 @@ public class Client {
     @Column(name = "client_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "client_person_id", nullable = false)
     private Person clientPerson;
 

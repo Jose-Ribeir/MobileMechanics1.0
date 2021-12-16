@@ -12,9 +12,8 @@ public class Price {
     @Column(name = "price_id", nullable = false)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "price_model_id")
-    private Model priceModel;
+    @Column(name = "price_model_id")
+    private Integer priceModelId;
 
     @ManyToOne
     @JoinColumn(name = "price_type_repair_id")
@@ -39,12 +38,12 @@ public class Price {
         this.priceTypeRepair = priceTypeRepair;
     }
 
-    public Model getPriceModel() {
-        return priceModel;
+    public Integer getPriceModelId() {
+        return priceModelId;
     }
 
-    public void setPriceModel(Model priceModel) {
-        this.priceModel = priceModel;
+    public void setPriceModelId(Integer priceModelId) {
+        this.priceModelId = priceModelId;
     }
 
     public Integer getId() {

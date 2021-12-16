@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="type_repair_repair")
 public class TypeRepairRepair {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type_repair_repair_id", nullable = false)

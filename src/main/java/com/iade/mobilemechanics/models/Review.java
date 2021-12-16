@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="reviews")
 public class Review {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id", nullable = false)
@@ -17,26 +18,28 @@ public class Review {
     @Column(name = "review_stars")
     private Integer reviewStars;
 
-    @Column(name = "review_client_id")
-    private Integer reviewClientId;
+    @ManyToOne
+    @JoinColumn(name = "review_client_id")
+    private Client reviewClient;
 
-    @Column(name = "review_repair_id")
-    private Integer reviewRepairId;
+    @ManyToOne
+    @JoinColumn(name = "review_repair_id")
+    private Repair reviewRepair;
 
-    public Integer getReviewRepairId() {
-        return reviewRepairId;
+    public Repair getReviewRepair() {
+        return reviewRepair;
     }
 
-    public void setReviewRepairId(Integer reviewRepairId) {
-        this.reviewRepairId = reviewRepairId;
+    public void setReviewRepair(Repair reviewRepair) {
+        this.reviewRepair = reviewRepair;
     }
 
-    public Integer getReviewClientId() {
-        return reviewClientId;
+    public Client getReviewClient() {
+        return reviewClient;
     }
 
-    public void setReviewClientId(Integer reviewClientId) {
-        this.reviewClientId = reviewClientId;
+    public void setReviewClient(Client reviewClient) {
+        this.reviewClient = reviewClient;
     }
 
     public Integer getReviewStars() {
@@ -59,4 +62,7 @@ public class Review {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

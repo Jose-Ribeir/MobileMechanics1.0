@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="type_repair")
 public class TypeRepair {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type_repair_id", nullable = false)
@@ -23,5 +24,9 @@ public class TypeRepair {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

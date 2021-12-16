@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Table(name="cars")
 public class Car {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id", nullable = false)
@@ -19,7 +20,7 @@ public class Car {
     @Column(name = "car_year", nullable = false)
     private Integer carYear;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "car_model_id")
     private Model carModel;
 
@@ -35,16 +36,15 @@ public class Car {
     @Column(name = "car_fuel", length = 8)
     private String carFuel;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "car_brand_id")
     private Brand carBrand;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
+    @ManyToOne
     @JoinColumn(name = "car_engine_id")
-    private Engine carEngine;
+    private ModelEngine carEngine;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "car_client_id")
     private Client carClient;
 
@@ -56,17 +56,11 @@ public class Car {
         this.carClient = carClient;
     }
 
-    public Engine getCarEngine() {
+    public ModelEngine getCarEngine() {
         return carEngine;
-
     }
 
-    public void setCarEngine(int id) {
-        this.carEngine = new Engine();
-        carEngine.setId(id);
-    }
-
-    public void setCarEngine(Engine carEngine) {
+    public void setCarEngine(ModelEngine carEngine) {
         this.carEngine = carEngine;
     }
 
