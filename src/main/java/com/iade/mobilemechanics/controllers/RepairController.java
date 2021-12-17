@@ -46,6 +46,7 @@ public class RepairController {
         Optional<Car> car = carRepository.findById(repair.getRepairCar());
         Optional<Mechanic> mechanic = mechanicRepository.findById(repair.getReepairMechanic());
 
+
         Repair repair1 = new Repair();
         repair1.setRepairCar(car.get());
         repair1.setRepairMechanic(mechanic.get());
