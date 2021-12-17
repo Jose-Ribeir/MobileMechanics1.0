@@ -7,7 +7,6 @@ import java.time.LocalDate;
 @Table(name="repairs")
 public class Repair {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "repair_id", nullable = false)
@@ -26,6 +25,28 @@ public class Repair {
     @ManyToOne
     @JoinColumn(name = "repair_car_id")
     private Car repairCar;
+
+    @Column(name = "repair_lat")
+    private Double repairLat;
+
+    @Column(name = "repair_long")
+    private Double repairLong;
+
+    public Double getRepairLong() {
+        return repairLong;
+    }
+
+    public void setRepairLong(Double repairLong) {
+        this.repairLong = repairLong;
+    }
+
+    public Double getRepairLat() {
+        return repairLat;
+    }
+
+    public void setRepairLat(Double repairLat) {
+        this.repairLat = repairLat;
+    }
 
     public Car getRepairCar() {
         return repairCar;
