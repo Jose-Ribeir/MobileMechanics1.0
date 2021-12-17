@@ -1,11 +1,10 @@
 package com.iade.mobilemechanics.controllers;
 
-import com.iade.mobilemechanics.models.Car;
-import com.iade.mobilemechanics.models.Model;
-import com.iade.mobilemechanics.models.Repair;
+import com.iade.mobilemechanics.models.*;
 import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
-import com.iade.mobilemechanics.models.repositories.RepairRepository;
+import com.iade.mobilemechanics.models.repositories.*;
+import com.iade.mobilemechanics.models.request.RepairRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,8 @@ public class RepairController {
 
     @Autowired
     private RepairRepository repairRepository;
+    private CarRepository carRepository;
+    private MechanicRepository mechanicRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Repair> getRepairs() {
@@ -40,12 +41,18 @@ public class RepairController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Repair saveRepair(@RequestBody Repair repair) {
+    public Repair saveRepair(@RequestBody RepairRequest repair) {
 
-        repair.getRepairCar();
-        Repair saveRepair = repairRepository.save(repair);
-        logger.info("Save Repair id " + saveRepair.getId() + " to Database");
-        return saveRepair;
+        Optional<Car> car = carRepository.findById(repair.getRepairCar());
+        Optional<Mechanic> mechanic = mechanicRepository.findById(repair.getReepairMechanic());
+
+        Repair repair1 = new Repair();
+        repair1.setRepairCar(car.get());
+        repair1.setRepairMechanic(mechanic.get());
+        repair1.setRepairDate(repair.getRepairDate());
+
+        logger.info("Save Repair id " + repair1.getId() + " to Database");
+        return repair1;
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
