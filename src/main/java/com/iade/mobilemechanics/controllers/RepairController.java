@@ -45,19 +45,19 @@ public class RepairController {
     public Repair saveRepair(@RequestBody RepairRequest repair) {
 
         Optional<Car> car = carRepository.findById(repair.getRepairCar());
-        Optional<Mechanic> mechanic = mechanicRepository.findById(repair.getReepairMechanic());
+       // Optional<Mechanic> mechanic = mechanicRepository.findById(repair.getReepairMechanic());
 
 
         Repair repair1 = new Repair();
         repair1.setRepairCar(car.get());
-        repair1.setRepairMechanic(mechanic.get());
-        repair1.setRepairDate(repair.getRepairDate());
+        //repair1.setRepairMechanic(mechanic.get());
+        //repair1.setRepairDate(repair.getRepairDate());
 
         logger.info("Save Repair id " + repair1.getId() + " to Database");
         return repair1;
     }
 
-    @PostMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/post/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Repair saveRepair(@RequestBody LocationRequest repair, @PathVariable int id) {
 
         Optional<Repair> reparacao = repairRepository.findById(id);
