@@ -57,8 +57,9 @@ public class RepairController {
         //repair1.setRepairMechanic(mechanic.get());
         //repair1.setRepairDate(repair.getRepairDate());
 
-        logger.info("Save Repair id " + repair1.getId() + " to Database");
-        return repair1;
+        Repair repairsave = repairRepository.save(repair1);
+        logger.info("Save Repair id " + repairsave.getId() + " to Database");
+        return repairsave;
     }
 
     @PostMapping(path = "/post/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
