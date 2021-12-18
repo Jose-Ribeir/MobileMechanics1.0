@@ -1,7 +1,6 @@
 package com.iade.mobilemechanics.controllers;
 
 import com.iade.mobilemechanics.models.*;
-import com.iade.mobilemechanics.models.exceptions.AlreadyExistsException;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
 import com.iade.mobilemechanics.models.repositories.*;
 import com.iade.mobilemechanics.models.request.LocationRequest;
@@ -23,6 +22,11 @@ public class RepairController {
     private RepairRepository repairRepository;
     private CarRepository carRepository;
     private MechanicRepository mechanicRepository;
+
+    public RepairController(CarRepository carRepository, MechanicRepository mechanicRepository) {
+        this.carRepository = carRepository;
+        this.mechanicRepository = mechanicRepository;
+    }
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Repair> getRepairs() {
