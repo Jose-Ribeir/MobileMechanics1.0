@@ -1,22 +1,22 @@
 package com.iade.mobilemechanics.models.request;
 
 public class LocationRequest {
-    private double repair_lat;
-    private double repair_long;
+    private double repairLat;
+    private double repairLong;
 
-    public double getRepair_lat() {
-        return repair_lat;
+    public double getRepairLat() {
+        return repairLat;
     }
 
-    public void setRepair_lat(double repair_lat) {
-        this.repair_lat = repair_lat;
+    public void setRepairLat(double repairLat) {
+        this.repairLat = repairLat;
     }
 
-    public double getRepair_long() {
-        return repair_long;
+    public double getRepairLong() {
+        return repairLong;
     }
 
-    public void setRepair_long(double repair_long) {
-        this.repair_long = repair_long;
+    public void setRepairLong(double repairLong) {
+        this.repairLong = repairLong;
     }
 }

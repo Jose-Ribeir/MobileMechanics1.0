@@ -69,10 +69,11 @@ public class RepairController {
 
 
         Repair repair1 = new Repair();
-
-        repair1.setRepairLat(repair.getRepair_lat());
-        repair1.setRepairLong(repair.getRepair_long());
+        repair1 = reparacao.get();
+        repair1.setRepairLat(repair.getRepairLat());
+        repair1.setRepairLong(repair.getRepairLong());
         //repair1.setId(reparacao.get);
+        final Repair updatedEmployee = repairRepository.save(repair1);
 
         logger.info("Save Repair id " + repair1.getId() + " to Database");
         return repair1;
@@ -93,4 +94,7 @@ public class RepairController {
     public Iterable<Repair> getRepairByCarId(@PathVariable int id){
         return repairRepository.findByRepairCarId(id);
     }
+
+
+
 }
