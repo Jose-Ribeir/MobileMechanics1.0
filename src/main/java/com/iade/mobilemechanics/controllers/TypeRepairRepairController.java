@@ -1,8 +1,12 @@
 package com.iade.mobilemechanics.controllers;
 
+import com.iade.mobilemechanics.models.Car;
+import com.iade.mobilemechanics.models.Repair;
+import com.iade.mobilemechanics.models.TypeRepair;
 import com.iade.mobilemechanics.models.TypeRepairRepair;
 import com.iade.mobilemechanics.models.exceptions.NotFoundException;
-import com.iade.mobilemechanics.models.repositories.TypeRepairRepairRepository;
+import com.iade.mobilemechanics.models.repositories.*;
+import com.iade.mobilemechanics.models.request.TypeRepairRepairRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +20,19 @@ import java.util.Optional;
 public class TypeRepairRepairController {
     private final Logger logger = LoggerFactory.getLogger(TypeRepairRepairController.class);
 
+    private TypeRepairRepository typeRepairRepository;
+    private RepairRepository repairRepository;
+
+
+
     @Autowired
     private TypeRepairRepairRepository repository;
+
+    public TypeRepairRepairController(TypeRepairRepository typeRepairRepository, RepairRepository repairRepository) {
+        this.typeRepairRepository = typeRepairRepository;
+        this.repairRepository = repairRepository;
+    }
+
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<TypeRepairRepair> getTypeRepairsRepairs(){
         logger.info("Send all typeRepairs to Request");
@@ -34,10 +49,25 @@ public class TypeRepairRepairController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public TypeRepairRepair saveTypeRepairRepair(@RequestBody TypeRepairRepair typeRepairRepair){
-        TypeRepairRepair saveTypeRepairRepair = repository.save(typeRepairRepair);
-        logger.info("Save typeRepairRepair " + saveTypeRepairRepair.getId() + " to Database");
+    public TypeRepairRepair saveTypeRepairRepair(@RequestBody TypeRepairRepairRequest typeRepairRepairRequest){
+
+        Optional<Repair> repair = repairRepository.findById(typeRepairRepairRequest.getTypeRepairRepairRepairId());
+        Optional<TypeRepair> typeRepair = typeRepairRepository.findById(typeRepairRepairRequest.getTypeRepairRepairTypeRepairId());
+
+        TypeRepairRepair save = new TypeRepairRepair();
+
+        save.setTypeRepairRepairRepair(repair.get());
+        save.setTypeRepairRepairTypeRepair(typeRepair.get());
+
+        TypeRepairRepair saveTypeRepairRepair = repository.save(save);
+        logger.info("Save typeRepairRepair " + save.getId() + " to Database");
+
+
+
+
+
         return saveTypeRepairRepair;
+
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
