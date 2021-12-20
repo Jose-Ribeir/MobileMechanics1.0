@@ -7,5 +7,4 @@ import java.util.Optional;
 
 public interface RepairRepository extends CrudRepository<Repair, Integer> {
     Iterable<Repair> findByRepairCarId(int id);
-
 }
