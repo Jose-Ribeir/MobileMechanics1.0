@@ -1,6 +1,7 @@
 package com.iade.mobilemechanics.models;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity
@@ -13,7 +14,7 @@ public class Repair {
     private Integer id;
 
     @Column(name = "repair_date")
-    private LocalDate repairDate;
+    private Instant repairDate;
 
     @Column(name = "repair_price", length = 69)
     private String repairPrice;
@@ -31,6 +32,28 @@ public class Repair {
 
     @Column(name = "repair_long")
     private Double repairLong;
+
+    @Column(name = "repair_taken")
+    private Boolean repairTaken;
+
+    @Column(name = "repair_completed")
+    private Boolean repairCompleted;
+
+    public Boolean getRepairCompleted() {
+        return repairCompleted;
+    }
+
+    public void setRepairCompleted(Boolean repairCompleted) {
+        this.repairCompleted = repairCompleted;
+    }
+
+    public Boolean getRepairTaken() {
+        return repairTaken;
+    }
+
+    public void setRepairTaken(Boolean repairTaken) {
+        this.repairTaken = repairTaken;
+    }
 
     public Double getRepairLong() {
         return repairLong;
@@ -72,11 +95,11 @@ public class Repair {
         this.repairPrice = repairPrice;
     }
 
-    public LocalDate getRepairDate() {
+    public Instant getRepairDate() {
         return repairDate;
     }
 
-    public void setRepairDate(LocalDate repairDate) {
+    public void setRepairDate(Instant repairDate) {
         this.repairDate = repairDate;
     }
 

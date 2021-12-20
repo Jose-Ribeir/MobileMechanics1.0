@@ -1,16 +1,16 @@
 package com.iade.mobilemechanics.models.request;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.Instant;
+
 
 public class RepairDateRequest {
-    private LocalDate repairDate;
+    private Instant repairDate;
 
-    public LocalDate  getRepairDate() {
+    public Instant getRepairDate() {
         return repairDate;
     }
 
-    public void setRepairDate(LocalDate  repairDate) {
+    public void setRepairDate(Instant repairDate) {
         this.repairDate = repairDate;
     }
 }
