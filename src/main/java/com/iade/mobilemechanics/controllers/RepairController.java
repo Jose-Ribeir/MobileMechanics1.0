@@ -46,6 +46,17 @@ public class RepairController {
 
     }
 
+    @GetMapping(path = "car/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Repair> getRepairbyCarid(@PathVariable int id) {
+        logger.info("Send Repair with id " + id + "to Request");
+        Iterable<Repair> _repair = repairRepository.findByRepairCarId(id);
+
+
+        return _repair;
+
+    }
+
+
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Repair saveRepair(@RequestBody RepairRequest repair) {
 
