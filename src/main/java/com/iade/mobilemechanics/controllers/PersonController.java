@@ -73,7 +73,7 @@ public class PersonController {
              throw new AlreadyExistsException(person.getPersonPhoneNumber(), "Phone Number", "");
          }
 
-
+        person.setPersonIsMechanic(false);
         Person savePerson = personRepository.save(person);
         logger.info("Save Client id " + savePerson.getId() + " to Database");
         return savePerson;
