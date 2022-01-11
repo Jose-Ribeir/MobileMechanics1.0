@@ -70,6 +70,8 @@ public class RepairController {
         //repair1.setRepairDate(repair.getRepairDate());
 
         Repair repairsave = repairRepository.save(repair1);
+        repairsave.setRepairCompleted(false);
+        repairsave.setRepairTaken(false);
         logger.info("Save Repair id " + repairsave.getId() + " to Database");
 
         return repairsave;
