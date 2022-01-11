@@ -7,21 +7,12 @@ private Integer repairCar;
 private Integer repairMechanic;
 private LocalDate repairDate;
 
-
     public Integer getRepairCar() {
         return repairCar;
     }
 
     public void setRepairCar(Integer repairCar) {
         this.repairCar = repairCar;
-    }
-
-    public Integer getReepairMechanic() {
-        return repairMechanic;
-    }
-
-    public void setReepairMechanic(Integer repairMechanic) {
-        this.repairMechanic = repairMechanic;
     }
 
     public Integer getRepairMechanic() {
