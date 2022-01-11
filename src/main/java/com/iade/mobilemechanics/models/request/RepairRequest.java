@@ -6,7 +6,8 @@ public class RepairRequest {
 private Integer repairCar;
 private Integer repairMechanic;
 private LocalDate repairDate;
-
+private Boolean repairTaken;
+private Boolean repairCompleted;
 
     public Integer getRepairCar() {
         return repairCar;
@@ -14,14 +15,6 @@ private LocalDate repairDate;
 
     public void setRepairCar(Integer repairCar) {
         this.repairCar = repairCar;
-    }
-
-    public Integer getReepairMechanic() {
-        return repairMechanic;
-    }
-
-    public void setReepairMechanic(Integer repairMechanic) {
-        this.repairMechanic = repairMechanic;
     }
 
     public Integer getRepairMechanic() {
@@ -38,5 +31,21 @@ private LocalDate repairDate;
 
     public void setRepairDate(LocalDate repairDate) {
         this.repairDate = repairDate;
+    }
+
+    public Boolean getRepairTaken() {
+        return repairTaken;
+    }
+
+    public void setRepairTaken(Boolean repairTaken) {
+        this.repairTaken = Boolean.FALSE;
+    }
+
+    public Boolean getRepairCompleted() {
+        return repairCompleted;
+    }
+
+    public void setRepairCompleted(Boolean repairCompleted) {
+        this.repairCompleted = Boolean.FALSE;
     }
 }
