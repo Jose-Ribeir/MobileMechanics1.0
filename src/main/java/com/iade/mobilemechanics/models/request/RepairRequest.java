@@ -34,7 +34,7 @@ private Boolean repairCompleted;
     }
 
     public Boolean getRepairTaken() {
-        return repairTaken;
+        return false;
     }
 
     public void setRepairTaken(Boolean repairTaken) {
@@ -42,7 +42,7 @@ private Boolean repairCompleted;
     }
 
     public Boolean getRepairCompleted() {
-        return repairCompleted;
+        return false;
     }
 
     public void setRepairCompleted(Boolean repairCompleted) {
