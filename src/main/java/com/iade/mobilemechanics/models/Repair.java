@@ -36,6 +36,7 @@ public class Repair {
     @Column(name = "repair_taken")
     private Boolean repairTaken;
 
+
     @Column(name = "repair_completed")
     private Boolean repairCompleted;
 
