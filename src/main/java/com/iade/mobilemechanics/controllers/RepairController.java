@@ -19,6 +19,7 @@ import java.util.Optional;
 public class RepairController {
     private final Logger logger = LoggerFactory.getLogger(RepairController.class);
 
+
     @Autowired
     private RepairRepository repairRepository;
     private CarRepository carRepository;
@@ -127,6 +128,9 @@ public class RepairController {
         return repairRepository.findByRepairCarId(id);
     }
 
-
+    @GetMapping(path = "/repairTaken", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Repair> getRepairsByRepairTakenFalse(){
+        return repairRepository.findByRepairTakenIsFalse();
+    }
 
 }
