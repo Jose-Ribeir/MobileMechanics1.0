@@ -88,7 +88,9 @@ public class RepairController {
         repair1 = reparacao.get();
         repair1.setRepairLat(repair.getRepairLat());
         repair1.setRepairLong(repair.getRepairLong());
-        //repair1.setId(reparacao.get);
+        repair1.setRepairTaken(false);
+        repair1.setRepairCompleted(false);
+
         final Repair updatedEmployee = repairRepository.save(repair1);
 
         logger.info("Save Repair id " + repair1.getId() + " to Database");
