@@ -132,7 +132,7 @@ public class RepairController {
 
     @GetMapping(path = "/repairTaken", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Repair> getRepairsByRepairTakenFalse(){
-        return repairRepository.findByRepairTakenIsNull();
+        return repairRepository.findByRepairTakenIsFalse();
     }
 
 }
